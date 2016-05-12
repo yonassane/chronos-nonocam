@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Master</title>
+    </head>
+    <body>
+        <input type="text" id="masterInput"/>
+        <button type="button" id="masterSubmitInput">Update</button>
+        <p>
+            Message :
+            <span id="masterText"></span>
+        </p>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+            var socket = io();
+
+            $('#masterSubmitInput').on('click', function() {
+                socket.emit('updateMessage', $('#masterInput').val());
+                $('#masterInput').val('');
+            });
+
+            socket.on('updateMessage', function(message) {
+                $('#masterText').text(message);
+            });
+        </script>
+    </body>
+</html>

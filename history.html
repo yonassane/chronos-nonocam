@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>History</title>
+    </head>
+    <body>
+        <ul id="historyList"></ul>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+            var socket = io();
+
+            socket.on('updateMessage', function(message) {
+                $('#historyList').append( '<li>'+message+'</li>' );
+            });
+        </script>
+    </body>
+</html>
