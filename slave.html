@@ -1,13 +1,15 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
         <title>Slave</title>
     </head>
     <body>
-        <h1 id="slaveText"></h1>
+        <div id="slaveText" class="text-center"></div>
 
         <script src="/socket.io/socket.io.js"></script>
-        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script>
             var socket = io();
 

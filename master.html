@@ -1,18 +1,31 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
         <title>Master</title>
     </head>
     <body>
-        <input type="text" id="masterInput"/>
-        <button type="button" id="masterSubmitInput">Update</button>
-        <p>
-            Message :
-            <span id="masterText"></span>
-        </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <textarea id="masterInput" class="form-control" rows="3">
+                    </textarea>
+
+                    <button type="button" id="masterSubmitInput">Update</button>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="text-center">
+                        Message :
+                        <span id="masterText"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="/socket.io/socket.io.js"></script>
-        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script>
             var socket = io();
 
