@@ -1,6 +1,6 @@
 {
-  "name": "testBruno",
-  "homepage": "https://github.com/yonassane/testBruno",
+  "name": "chronos-nonocam",
+  "homepage": "https://github.com/yonassane/chronos-nonocam",
   "authors": [
     "Jonathan Decrocq <jonathan.decrocq@gmail.com>"
   ],
@@ -20,6 +20,7 @@
     "bootstrap": "^3.3.6",
     "angular": "^1.5.5",
     "angular-socket-io": "^0.7.0",
-    "angular-color-picker": "angularjs-color-picker#^1.1.2"
+    "angular-color-picker": "angularjs-color-picker#^1.1.2",
+    "angular-fullscreen": "fabiobiondi/angular-fullscreen#^1.0.1"
   }
 }

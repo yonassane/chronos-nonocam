@@ -4,13 +4,10 @@
 
 angular.module("slaveApp")
 
-.controller("slaveCtrl", ["$window", "socketFactory", function ($window, socketFactory) {
+.controller("slaveCtrl", ["$scope", "$window", "$timeout", "socketFactory", function ($scope, $window, $timeout, socketFactory) {
 
-    var self = this;
-    var socket = socketFactory();
-    // TODO compute it from messageArea width
-    var messageAreaHeightInPixel    = $window.innerHeight;
-    var messageAreaPaddingInPixel   = 20;
+    var self    = this;
+    var socket  = socketFactory();
 
 
     /* Methods */
@@ -19,19 +16,24 @@ angular.module("slaveApp")
         self.messageStyle   = {
             'color':            message.textColor,
             'background-color': message.backgroundColor,
-            'height':           messageAreaHeightInPixel,
-            'padding-top':      messageAreaPaddingInPixel,
-            'padding-bottom':   messageAreaPaddingInPixel,
-            'font-size':        Math.floor((messageAreaHeightInPixel - 2 * messageAreaPaddingInPixel) / message.rows)+"px"
+            // -2 because we have padding-top and padding-bottom set to 1vh
+            'font-size':        ( (100 - 2) / message.rows ) + "vh"
         };
-
-        console.log("message: %o", self.message);
-        console.log("messageStyle: %o", self.messageStyle);
     };
-
 
     /* Socket.io events */
     socket.on("updateMessage", self.updateMessageArea);
+
+    /* Properties */
+    self.isFullscreen = false;
+
+
+    self.updateMessageArea({
+        'text':             "Coucou !\nComment\nCa va ?",
+        'textColor':        "#FF7D26",
+        'backgroundColor':  "#000000",
+        'rows':             3
+    });
 
 }]);
 

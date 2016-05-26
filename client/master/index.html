@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.css" />
         <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css"/>
 
+        <link rel="stylesheet" href="/css/style.css"/>
         <link rel="stylesheet" href="master.css"/>
 
         <title>Master</title>
@@ -83,11 +84,15 @@
                     </button>
                 </div>
 
-                <div
-                    id="messageArea"
-                    class="col-xs-6 text-center"
-                    ng-style="master.messageStyle"
-                    >{{ master.message.text }}</div>
+                <div class="col-xs-6">
+                    <div class="stretchy-wrapper">
+                        <div
+                            id="messageArea"
+                            class="text-center"
+                            ng-style="master.messageStyle"
+                            >{{ master.message.text }}</div>
+                    </div>
+                </div>
             </div>
         </div>
 

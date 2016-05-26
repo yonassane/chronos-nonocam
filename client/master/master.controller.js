@@ -4,13 +4,10 @@
 
 angular.module("masterApp")
 
-.controller("masterCtrl", ["socketFactory", function (socketFactory) {
+.controller("masterCtrl", ["$scope", "$window", "socketFactory", function ($scope, $window, socketFactory) {
 
     var self = this;
     var socket = socketFactory();
-    // TODO compute it from messageArea width
-    var messageAreaHeightInPixel    = 330;
-    var messageAreaPaddingInPixel   = 10;
 
 
     /* Methods */
@@ -23,28 +20,29 @@ angular.module("masterApp")
         self.messageStyle   = {
             'color':            message.textColor,
             'background-color': message.backgroundColor,
-            'height':           messageAreaHeightInPixel,
-            'padding-top':      messageAreaPaddingInPixel,
-            'padding-bottom':   messageAreaPaddingInPixel,
-            'font-size':        Math.floor((messageAreaHeightInPixel - 2 * messageAreaPaddingInPixel) / message.rows)+"px"
+            'font-size':        ($('#messageArea').height() / message.rows)+"px"
         };
-
-        console.log("message: %o", self.message);
-        console.log("messageStyle: %o", self.messageStyle);
     };
 
-
-    /* Socket.io events */
+    /* Events */
     socket.on("updateMessage", self.updateMessageArea);
 
+    angular.element($window).on("resize", function(evt) {
+        if ( self.messageStyle && self.messageStyle["font-size"] ) {
+            $scope.$apply(function() {
+                self.messageStyle["font-size"] = ($('#messageArea').height() / self.message.rows)+"px";
+            });
+        }
+    });
 
     /* Properties */
     self.newMsg = {
-        'text':             "Coucou !\nComment\nça va ?",
+        'text':             "Coucou !\nComment\nCa va ?",
         'textColor':        "#FF7D26",
         'backgroundColor':  "#000000",
         'rows':             3
     };
+
 
     self.updateMessageArea(self.newMsg);
 

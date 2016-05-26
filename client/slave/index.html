@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.css" />
         <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css"/>
 
+        <link rel="stylesheet" href="/css/index.css"/>
         <link rel="stylesheet" href="slave.css"/>
 
         <title>Slave</title>
@@ -14,12 +15,16 @@
             id="messageArea"
             class="text-center"
             ng-style="slave.messageStyle"
+            fullscreen="slave.isFullscreen"
+            only-watched-property
+            ng-click="slave.isFullscreen = !slave.isFullscreen"
             >{{ slave.message.text }}</div>
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="/bower_components/angular/angular.min.js"></script>
         <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/bower_components/angular-fullscreen/src/angular-fullscreen.js"></script>
         <script src="/bower_components/angular-socket-io/socket.min.js"></script>
         <script src="/bower_components/tinycolor/dist/tinycolor-min.js"></script>
         <script src="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.js"></script>
