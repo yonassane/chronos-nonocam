@@ -1,0 +1,5 @@
+#messageArea {
+    border-style:   outset;
+    white-space:    pre;
+    line-height:    1;
+}
