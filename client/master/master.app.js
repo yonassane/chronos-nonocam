@@ -4,7 +4,8 @@
 
 angular.module("masterApp", [
     "btford.socket-io",
-    "color.picker"
+    "color.picker",
+    "chronos-nonocam.global"
 ]);
 
 })();

@@ -4,7 +4,8 @@
 
 angular.module("slaveApp", [
     "btford.socket-io",
-    "FBAngular"
+    "FBAngular",
+    "chronos-nonocam.global"
 ]);
 
 })();

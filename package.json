@@ -1,0 +1,27 @@
+{
+  "name": "chronos-nonocam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "http-auth": "^2.3.6",
+    "socket.io": "^1.4.6",
+    "sqlite3": "^3.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yonassane/chronos-nonocam.git"
+  },
+  "author": "Jonathan Decrocq <jonathan.decrocq@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yonassane/chronos-nonocam/issues"
+  },
+  "homepage": "https://github.com/yonassane/chronos-nonocam#readme"
+}

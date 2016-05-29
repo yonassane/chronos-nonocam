@@ -4,7 +4,8 @@
 
 angular.module("slaveApp")
 
-.controller("slaveCtrl", ["$scope", "$window", "$timeout", "socketFactory", function ($scope, $window, $timeout, socketFactory) {
+.controller("slaveCtrl", ["$scope", "$window", "$timeout", "socketFactory", "CNMessage",
+function ($scope, $window, $timeout, socketFactory, CNMessage) {
 
     var self    = this;
     var socket  = socketFactory();
@@ -12,6 +13,10 @@ angular.module("slaveApp")
 
     /* Methods */
     self.updateMessageArea = function(message) {
+        if (!message) {
+            return;
+        }
+
         self.message        = angular.copy(message);
         self.messageStyle   = {
             'color':            message.textColor,
@@ -28,12 +33,7 @@ angular.module("slaveApp")
     self.isFullscreen = false;
 
 
-    self.updateMessageArea({
-        'text':             "Coucou !\nComment\nCa va ?",
-        'textColor':        "#FF7D26",
-        'backgroundColor':  "#000000",
-        'rows':             3
-    });
+    CNMessage.getLast().then(self.updateMessageArea);
 
 }]);
 

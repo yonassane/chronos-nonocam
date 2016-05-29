@@ -4,7 +4,8 @@
 
 angular.module("masterApp")
 
-.controller("masterCtrl", ["$scope", "$window", "socketFactory", function ($scope, $window, socketFactory) {
+.controller("masterCtrl", ["$scope", "$window", "socketFactory", "CNMessage",
+function ($scope, $window, socketFactory, CNMessage) {
 
     var self = this;
     var socket = socketFactory();
@@ -16,6 +17,10 @@ angular.module("masterApp")
     };
 
     self.updateMessageArea = function(message) {
+        if (!message) {
+            return;
+        }
+
         self.message        = angular.copy(message);
         self.messageStyle   = {
             'color':            message.textColor,
@@ -35,16 +40,14 @@ angular.module("masterApp")
         }
     });
 
-    /* Properties */
-    self.newMsg = {
-        'text':             "Coucou !\nComment\nCa va ?",
-        'textColor':        "#FF7D26",
-        'backgroundColor':  "#000000",
-        'rows':             3
-    };
 
-
-    self.updateMessageArea(self.newMsg);
+    CNMessage.getLast()
+        .then(function(message) {
+            if (!self.message) {
+                self.newMsg = angular.copy(message);
+                self.updateMessageArea(message);
+            }
+        });
 
 }]);
 
