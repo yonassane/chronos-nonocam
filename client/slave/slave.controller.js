@@ -4,8 +4,8 @@
 
 angular.module("slaveApp")
 
-.controller("slaveCtrl", ["$scope", "$window", "$timeout", "socketFactory", "CNMessage",
-function ($scope, $window, $timeout, socketFactory, CNMessage) {
+.controller("slaveCtrl", ["socketFactory", "CNMessage",
+function (socketFactory, CNMessage) {
 
     var self    = this;
     var socket  = socketFactory();

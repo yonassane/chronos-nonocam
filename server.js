@@ -35,15 +35,15 @@ app
 .get('/master', httpAuth.connect(basicAuth), express.static(__dirname + "/client/master"))
 .get('/api/message/last', function(req, res) {
     db.get(
-        'SELECT `text`, `textColor`, `backgroundColor`, `rows` FROM `message` ORDER BY `creationDate` DESC LIMIT 1',
+        'SELECT `text`, `textColor`, `backgroundColor`, `rows`, `creationDate` FROM `message` ORDER BY `creationDate` DESC LIMIT 1',
         function(err, row) {
             res.send(row);
         }
     );
 })
-.get('/api/message/all', function() {
+.get('/api/message/all', function(req, res) {
     db.all(
-        'SELECT `text`, `textColor`, `backgroundColor`, `rows` FROM `message` ORDER BY `creationDate` ASC',
+        'SELECT `text`, `textColor`, `backgroundColor`, `rows`, `creationDate` FROM `message` ORDER BY `creationDate` ASC',
         function(err, rows) {
             res.send(rows);
         }

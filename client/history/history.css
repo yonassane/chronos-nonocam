@@ -1,0 +1,8 @@
+.messageArea {
+    display:        inline-block;
+    white-space:    pre;
+    font-family:    "DS-Digital";
+    font-size:      3em;
+    line-height:    1;
+    padding:        5px;
+}

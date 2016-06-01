@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="historyApp">
+    <head>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+
+        <link rel="stylesheet" href="/css/global.css"/>
+        <link rel="stylesheet" href="history.css"/>
+
+        <title>History</title>
+    </head>
+    <body ng-controller="historyCtrl as history">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Chronos Nonocam</a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/master">Master</a></li>
+                        <li class="active"><a href="/history">History<span class="sr-only"> (current)</span></a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/slave" target="_blank">
+                                Slave
+                                <span class="glyphicon glyphicon-new-window"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <div ng-repeat="message in history.messageList | orderBy:'creationDate':true">
+            <div class="text-center">
+                <div class="messageArea" ng-style="message.style">{{ message.text }}</div>
+            </div>
+            <div class="text-center">{{ message.creationDate }}</div>
+            <hr/>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/bower_components/angular-socket-io/socket.min.js"></script>
+
+        <script src="/js/global.service.js"></script>
+        <script src="/history/history.app.js"></script>
+        <script src="/history/history.controller.js"></script>
+    </body>
+</html>
